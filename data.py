@@ -24,8 +24,10 @@ numberPeriod = r"((?<!...)\b[0-9]\.)"
 # use regex to list all numbers (soon)
 rules = re.findall(numberPeriod, splitByGloss[1])
 
+# empty dictionary to be stored with rules
 RulesObj = {}
 
+# add default rules section
 for i in rules:
     RulesObj[i] = {}
 
