@@ -11,12 +11,22 @@ page_html = uClient.read()
 uClient.close()
 
 page_soup = soup(page_html, "html.parser")
+
 # convert webpage to string
 string = str(page_soup)
+
+# using "Glossary" to split up the rules
+splitByGloss = string.split("Glossary")
+
 # a regex to find a single number followed
 # by a period (ex. 1. and not 100.1.)
-numberPeriod = r"((?<!...)\b[0-9]\. )"
+numberPeriod = r"((?<!...)\b[0-9]\.)"
 # use regex to list all numbers (soon)
-rules = re.split(numberPeriod, string)
-print (rules[0])
+rules = re.findall(numberPeriod, splitByGloss[1])
 
+RulesObj = {}
+
+for i in rules:
+    RulesObj[i] = {}
+
+print (RulesObj)
